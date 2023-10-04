@@ -38,6 +38,10 @@ function App() {
     },
   });
 
+  const showAlert = (message) => {
+    alert(message);
+  };
+
   return (
     <div className="App">
       <header>
@@ -56,11 +60,188 @@ function App() {
               {...formik.getFieldProps('representante')}
             />
             {formik.touched.representante && formik.errors.representante ? (
-              <div className="error">{formik.errors.representante}</div>
+              <div className="error">
+                {formik.errors.representante}
+                <button type="button" onClick={() => showAlert(formik.errors.representante)}>Mostrar Error</button>
+              </div>
             ) : null}
           </div>
-          {/* Other fields (similar to Representante) */}
-          
+          {/* CURP */}
+          <div className="field">
+            <label htmlFor="curp">CURP:</label>
+            <input
+              type="text"
+              id="curp"
+              name="curp"
+              {...formik.getFieldProps('curp')}
+            />
+            {formik.touched.curp && formik.errors.curp ? (
+              <div className="error">
+                {formik.errors.curp}
+                <button type="button" onClick={() => showAlert(formik.errors.curp)}>Mostrar Error</button>
+              </div>
+            ) : null}
+          </div>
+          {/* Nombre, Paterno, Materno */}
+          <div className="name-container">
+            <div className="name-field">
+              <label htmlFor="nombre">Nombre:</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                {...formik.getFieldProps('nombre')}
+              />
+              {formik.touched.nombre && formik.errors.nombre ? (
+                <div className="error">
+                  {formik.errors.nombre}
+                  <button type="button" onClick={() => showAlert(formik.errors.nombre)}>Mostrar Error</button>
+                </div>
+              ) : null}
+            </div>
+            <div className="name-field">
+              <label htmlFor="paterno">Paterno:</label>
+              <input
+                type="text"
+                id="paterno"
+                name="paterno"
+                {...formik.getFieldProps('paterno')}
+              />
+              {formik.touched.paterno && formik.errors.paterno ? (
+                <div className="error">
+                  {formik.errors.paterno}
+                  <button type="button" onClick={() => showAlert(formik.errors.paterno)}>Mostrar Error</button>
+                </div>
+              ) : null}
+            </div>
+            <div className="name-field">
+              <label htmlFor="materno">Materno:</label>
+              <input
+                type="text"
+                id="materno"
+                name="materno"
+                {...formik.getFieldProps('materno')}
+              />
+              {formik.touched.materno && formik.errors.materno ? (
+                <div className="error">
+                  {formik.errors.materno}
+                  <button type="button" onClick={() => showAlert(formik.errors.materno)}>Mostrar Error</button>
+                </div>
+              ) : null}
+            </div>
+          </div>
+          {/* Teléfono, Celular, Correo */}
+          <div className="contact-container">
+            <div className="contact-field">
+              <label htmlFor="telefono">Teléfono:</label>
+              <input
+                type="text"
+                id="telefono"
+                name="telefono"
+                {...formik.getFieldProps('telefono')}
+              />
+              {formik.touched.telefono && formik.errors.telefono ? (
+                <div className="error">
+                  {formik.errors.telefono}
+                  <button type="button" onClick={() => showAlert(formik.errors.telefono)}>Mostrar Error</button>
+                </div>
+              ) : null}
+            </div>
+            <div className="contact-field">
+              <label htmlFor="celular">Celular:</label>
+              <input
+                type="text"
+                id="celular"
+                name="celular"
+                {...formik.getFieldProps('celular')}
+              />
+              {formik.touched.celular && formik.errors.celular ? (
+                <div className="error">
+                  {formik.errors.celular}
+                  <button type="button" onClick={() => showAlert(formik.errors.celular)}>Mostrar Error</button>
+                </div>
+              ) : null}
+            </div>
+            <div className="contact-field">
+              <label htmlFor="correo">Correo:</label>
+              <input
+                type="email"
+                id="correo"
+                name="correo"
+                {...formik.getFieldProps('correo')}
+              />
+              {formik.touched.correo && formik.errors.correo ? (
+                <div className="error">
+                  {formik.errors.correo}
+                  <button type="button" onClick={() => showAlert(formik.errors.correo)}>Mostrar Error</button>
+                </div>
+              ) : null}
+            </div>
+          </div>
+          {/* Nivel */}
+          <div className="field">
+            <label htmlFor="nivel">¿Nivel al que desea ingresar o que ya cursa el alumno?</label>
+            <select
+              id="nivel"
+              name="nivel"
+              {...formik.getFieldProps('nivel')}
+            >
+              <option value="0">Elige un nivel educativo</option>
+              <option value="1">Primaria</option>
+              <option value="2">Secundaria</option>
+              <option value="3">Preparatoria</option>
+              <option value="4">Universidad</option>
+            </select>
+            {formik.touched.nivel && formik.errors.nivel ? (
+              <div className="error">
+                {formik.errors.nivel}
+                <button type="button" onClick={() => showAlert(formik.errors.nivel)}>Mostrar Error</button>
+              </div>
+            ) : null}
+          </div>
+          {/* Municipio */}
+          <div className="field">
+            <label htmlFor="municipio">Municipio donde desea que estudie el alumno:</label>
+            <select
+              id="municipio"
+              name="municipio"
+              {...formik.getFieldProps('municipio')}
+            >
+              <option value="0">Elige un municipio</option>
+              <option value="1">Saltillo</option>
+              <option value="2">Arteaga</option>
+              <option value="3">Torreón</option>
+              <option value="4">Monclova</option>
+            </select>
+            {formik.touched.municipio && formik.errors.municipio ? (
+              <div className="error">
+                {formik.errors.municipio}
+                <button type="button" onClick={() => showAlert(formik.errors.municipio)}>Mostrar Error</button>
+              </div>
+            ) : null}
+          </div>
+          {/* Asunto */}
+          <div className="field">
+            <label htmlFor="asunto">Seleccione el asunto que va a tratar:</label>
+            <select
+              id="asunto"
+              name="asunto"
+              {...formik.getFieldProps('asunto')}
+            >
+              <option value="0">Elige un asunto</option>
+              <option value="1">Consulta</option>
+              <option value="2">Queja</option>
+              <option value="3">Sugerencia</option>
+              <option value="4">Otro</option>
+            </select>
+            {formik.touched.asunto && formik.errors.asunto ? (
+              <div className="error">
+                {formik.errors.asunto}
+                <button type="button" onClick={() => showAlert(formik.errors.asunto)}>Mostrar Error</button>
+              </div>
+            ) : null}
+          </div>
+
           {/* Submit Button */}
           <div className="submit-button">
             <button type="submit">Generar Turno</button>
