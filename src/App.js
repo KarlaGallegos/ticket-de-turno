@@ -58,7 +58,6 @@ function App() {
             {formik.touched.representante && formik.errors.representante ? (
               <div className="error">
                 {formik.errors.representante}
-                <button type="button" onClick={() => showAlert(formik.errors.representante)}>Mostrar Error</button>
               </div>
             ) : null}
           </div>
@@ -90,7 +89,6 @@ function App() {
               {formik.touched.nombre && formik.errors.nombre ? (
                 <div className="error">
                   {formik.errors.nombre}
-                  <button type="button" onClick={() => showAlert(formik.errors.nombre)}>Mostrar Error</button>
                 </div>
               ) : null}
             </div>
@@ -105,7 +103,6 @@ function App() {
               {formik.touched.paterno && formik.errors.paterno ? (
                 <div className="error">
                   {formik.errors.paterno}
-                  <button type="button" onClick={() => showAlert(formik.errors.paterno)}>Mostrar Error</button>
                 </div>
               ) : null}
             </div>
@@ -120,7 +117,6 @@ function App() {
               {formik.touched.materno && formik.errors.materno ? (
                 <div className="error">
                   {formik.errors.materno}
-                  <button type="button" onClick={() => showAlert(formik.errors.materno)}>Mostrar Error</button>
                 </div>
               ) : null}
             </div>
@@ -138,7 +134,6 @@ function App() {
               {formik.touched.telefono && formik.errors.telefono ? (
                 <div className="error">
                   {formik.errors.telefono}
-                  <button type="button" onClick={() => showAlert(formik.errors.telefono)}>Mostrar Error</button>
                 </div>
               ) : null}
             </div>
@@ -153,7 +148,6 @@ function App() {
               {formik.touched.celular && formik.errors.celular ? (
                 <div className="error">
                   {formik.errors.celular}
-                  <button type="button" onClick={() => showAlert(formik.errors.celular)}>Mostrar Error</button>
                 </div>
               ) : null}
             </div>
@@ -168,7 +162,6 @@ function App() {
               {formik.touched.correo && formik.errors.correo ? (
                 <div className="error">
                   {formik.errors.correo}
-                  <button type="button" onClick={() => showAlert(formik.errors.correo)}>Mostrar Error</button>
                 </div>
               ) : null}
             </div>
@@ -190,7 +183,6 @@ function App() {
             {formik.touched.nivel && formik.errors.nivel ? (
               <div className="error">
                 {formik.errors.nivel}
-                <button type="button" onClick={() => showAlert(formik.errors.nivel)}>Mostrar Error</button>
               </div>
             ) : null}
           </div>
@@ -211,7 +203,6 @@ function App() {
             {formik.touched.municipio && formik.errors.municipio ? (
               <div className="error">
                 {formik.errors.municipio}
-                <button type="button" onClick={() => showAlert(formik.errors.municipio)}>Mostrar Error</button>
               </div>
             ) : null}
           </div>
@@ -232,11 +223,9 @@ function App() {
             {formik.touched.asunto && formik.errors.asunto ? (
               <div className="error">
                 {formik.errors.asunto}
-                <button type="button" onClick={() => showAlert(formik.errors.asunto)}>Mostrar Error</button>
               </div>
             ) : null}
           </div>
-
           {/* Submit Button */}
           <div className="submit-button">
             <button type="submit">Generar Turno</button>
