@@ -38,10 +38,6 @@ function App() {
     },
   });
 
-  const showAlert = (message) => {
-    alert(message);
-  };
-
   return (
     <div className="App">
       <header>
@@ -78,7 +74,6 @@ function App() {
             {formik.touched.curp && formik.errors.curp ? (
               <div className="error">
                 {formik.errors.curp}
-                <button type="button" onClick={() => showAlert(formik.errors.curp)}>Mostrar Error</button>
               </div>
             ) : null}
           </div>
