@@ -25,16 +25,18 @@ function App() {
       nombre: Yup.string().required('El nombre es requerido').min(3, 'El nombre debe tener al menos 3 caracteres'),
       paterno: Yup.string().required('El apellido paterno es requerido').min(4, 'El apellido paterno debe tener al menos 4 caracteres'),
       materno: Yup.string().required('El apellido materno es requerido').min(4, 'El apellido materno debe tener al menos 4 caracteres'),
-      telefono: Yup.string().required('El teléfono es requerido').matches(/^\d{10}$/, 'Ingrese un número de teléfono válido'),
-      celular: Yup.string().required('El celular es requerido').matches(/^\d{10}$/, 'Ingrese un número de celular válido'),
-      correo: Yup.string().required('El correo es requerido').email('Ingrese un correo válido'),
+      telefono: Yup.string().required('El teléfono es requerido').matches(/^\d{10}$/, 'Ingrese un número de teléfono válido (10 caracteres)'),
+      celular: Yup.string().required('El celular es requerido').matches(/^\d{10}$/, 'Ingrese un número de celular válido (10 caracteres)'),
+      correo: Yup.string().required('El correo es requerido').email('Ingrese un correo válido').matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/, 'El correo no cumple el formato requerido'),
       nivel: Yup.string().notOneOf(['0'], 'Seleccione un nivel educativo'),
       municipio: Yup.string().notOneOf(['0'], 'Seleccione un municipio'),
       asunto: Yup.string().notOneOf(['0'], 'Seleccione un asunto'),
     }),
-    onSubmit: (values) => {
-      // You can handle form submission here
-      console.log(values);
+    onSubmit: (values, { resetForm }) => {
+      if (Object.keys(formik.errors).length === 0) {
+        alert('Formulario enviado exitosamente');
+        resetForm();
+      }
     },
   });
 
@@ -56,7 +58,7 @@ function App() {
               {...formik.getFieldProps('representante')}
             />
             {formik.touched.representante && formik.errors.representante ? (
-              <div className="error">
+              <div className="error-message">
                 {formik.errors.representante}
               </div>
             ) : null}
@@ -71,7 +73,7 @@ function App() {
               {...formik.getFieldProps('curp')}
             />
             {formik.touched.curp && formik.errors.curp ? (
-              <div className="error">
+              <div className="error-message">
                 {formik.errors.curp}
               </div>
             ) : null}
@@ -87,7 +89,7 @@ function App() {
                 {...formik.getFieldProps('nombre')}
               />
               {formik.touched.nombre && formik.errors.nombre ? (
-                <div className="error">
+                <div className="error-message">
                   {formik.errors.nombre}
                 </div>
               ) : null}
@@ -101,7 +103,7 @@ function App() {
                 {...formik.getFieldProps('paterno')}
               />
               {formik.touched.paterno && formik.errors.paterno ? (
-                <div className="error">
+                <div className="error-message">
                   {formik.errors.paterno}
                 </div>
               ) : null}
@@ -115,7 +117,7 @@ function App() {
                 {...formik.getFieldProps('materno')}
               />
               {formik.touched.materno && formik.errors.materno ? (
-                <div className="error">
+                <div className="error-message">
                   {formik.errors.materno}
                 </div>
               ) : null}
@@ -132,7 +134,7 @@ function App() {
                 {...formik.getFieldProps('telefono')}
               />
               {formik.touched.telefono && formik.errors.telefono ? (
-                <div className="error">
+                <div className="error-message">
                   {formik.errors.telefono}
                 </div>
               ) : null}
@@ -146,7 +148,7 @@ function App() {
                 {...formik.getFieldProps('celular')}
               />
               {formik.touched.celular && formik.errors.celular ? (
-                <div className="error">
+                <div className="error-message">
                   {formik.errors.celular}
                 </div>
               ) : null}
@@ -160,7 +162,7 @@ function App() {
                 {...formik.getFieldProps('correo')}
               />
               {formik.touched.correo && formik.errors.correo ? (
-                <div className="error">
+                <div className="error-message">
                   {formik.errors.correo}
                 </div>
               ) : null}
@@ -181,7 +183,7 @@ function App() {
               <option value="4">Universidad</option>
             </select>
             {formik.touched.nivel && formik.errors.nivel ? (
-              <div className="error">
+              <div className="error-message">
                 {formik.errors.nivel}
               </div>
             ) : null}
@@ -201,7 +203,7 @@ function App() {
               <option value="4">Monclova</option>
             </select>
             {formik.touched.municipio && formik.errors.municipio ? (
-              <div className="error">
+              <div className="error-message">
                 {formik.errors.municipio}
               </div>
             ) : null}
@@ -221,7 +223,7 @@ function App() {
               <option value="4">Otro</option>
             </select>
             {formik.touched.asunto && formik.errors.asunto ? (
-              <div className="error">
+              <div className="error-message">
                 {formik.errors.asunto}
               </div>
             ) : null}
